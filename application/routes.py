@@ -13,7 +13,7 @@ def format_pokemon(pokemon):
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, Pokemon Trainers/p>"
+    return render_template("layout.html", title="Home")
 
 @app.route("/pokemons/", methods=["POST", "GET"])
 def pokemon_requests():
@@ -32,13 +32,13 @@ def pokemon_requests():
         pokemon_list = []
         for pokemon in pokemons:
             pokemon_list.append(format_pokemon(pokemon))
-        return render_template("pokemons.html", pokemons=pokemon_list, form=form)
+        return render_template("pokemons.html", pokemons=pokemon_list, form=form, title="Pokemons")
 
 @app.route("/pokemons/<id>/")
 def get_pokemon(id):
     pokemon = Pokemon.query.filter_by(id = id).first()
     # return format_character(character)
-    return render_template("pokemon.html", pokemon=pokemon)
+    return render_template("pokemon.html", pokemon=pokemon, title="Pokemon")
 
 # @app.route("/characters/<id>/", methods=["DELETE"])
 # def delete_character(id):
