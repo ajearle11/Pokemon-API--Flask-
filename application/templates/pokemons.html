@@ -7,6 +7,7 @@
 {% endfor %}
 
 <form method="POST" action="">
+  {{form.hidden_tag()}}
   <fieldset>
     <legend>Create a Pokemon</legend>
     <div>{{form.name.label}} {{form.name}}</div>
